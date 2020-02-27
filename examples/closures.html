@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    //Immediately invoked function expression
+   /* (function () {
+        let color = 'green';
+        function printColor() {
+            console.log(color);
+        }
+        printColor();
+    })(); */
+
+    function makeColorPrinter(color) {
+        let colorMessage = `The color is ${color}`;
+        return function () {
+            console.log(colorMessage);
+        }
+    }
+
+    let greenColorPrinter = makeColorPrinter('green');
+    console.log(greenColorPrinter());
+
+    function makeCounter(number) {
+        let count = number;
+        return {
+            increase: function () {
+                count += 1;
+            },
+            decrease: function () {
+                count -= 1;
+            },
+            getCount: function () {return count}
+        };
+    }
+
+    let counter = makeCounter(7);
+
+    console.log('the count is:',  counter.getCount());
+    counter.increase();
+    console.log('the count is:',  counter.getCount());
+    counter.increase();
+    console.log('the count is:',  counter.getCount());
+
+
+</script>
+</html>
